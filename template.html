@@ -60,6 +60,7 @@
             gap: 25px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
         }
 
         .product-card:hover {
@@ -178,6 +179,10 @@
             transform: translateY(-1px);
         }
 
+        .product-link:active {
+            transform: translateY(0);
+        }
+
         .product-price {
             font-size: 24px;
             font-weight: 700;
@@ -217,7 +222,7 @@
 
     <div class="container">
         {% for product in products %}
-        <div class="product-card">
+        <div class="product-card" onclick="window.open('{{ product.product_page_url }}', '_blank')">
             <div class="product-image">
                 {% if product.thumbnail %}
                 <img src="images/{{ product.thumbnail }}" alt="{{ product.product_pn }}">
@@ -240,11 +245,11 @@
 
                 <div class="product-footer">
                     <div class="product-links">
-                        <a href="{{ product.datasheet_link }}" class="product-link" target="_blank">
+                        <a href="{{ product.datasheet_link }}" class="product-link" target="_blank" onclick="event.stopPropagation();">
                             <span class="icon">📄</span>
                             <span>Datasheet</span>
                         </a>
-                        <a href="{{ product.manual_link }}" class="product-link" target="_blank">
+                        <a href="{{ product.manual_link }}" class="product-link" target="_blank" onclick="event.stopPropagation();">
                             <span class="icon">📖</span>
                             <span>Manual</span>
                         </a>

@@ -20,7 +20,7 @@ The CSV file contains the following columns:
 - `bullet_3` - Third feature/specification
 - `datasheet_link` - URL to product datasheet PDF
 - `manual_link` - URL to product manual PDF
-- `product_url` - URL to product page
+- `product_page_url` - URL to product page (card click destination)
 - `price` - Product price (formatted as $X,XXX)
 - `thumbnail` - Filename of product image (placed in images/ folder)
 
@@ -64,10 +64,11 @@ Simply open `product_display.html` in a browser on your 7" tablet.
 - **Layout**: Scrollable card-based design
 - **Design**: Modern dark theme with cyan accents
 - **Features**:
+  - Clickable product cards (click anywhere to visit product page)
   - Product images (200x150px display area)
   - Product name and part number
   - Three bullet-point features
-  - Direct links to datasheets and manuals
+  - Direct links to datasheets and manuals (with event propagation stopping)
   - Pricing information
   - Smooth hover effects
   - Custom scrollbar

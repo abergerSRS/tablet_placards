@@ -1,4 +1,4 @@
-product_pn,product_name,bullet_1,bullet_2,bullet_3,datasheet_link,manual_link,product_url,price,thumbnail
+product_pn,product_name,bullet_1,bullet_2,bullet_3,datasheet_link,manual_link,product_page_url,price,thumbnail
 DC215,DC Voltage/Current Source,±32 V voltage & ±240 mA current,4-quadrant operation (source/sink),GPIB ethernet & RS-232 interfaces,https://www.thinksrs.com/downloads/pdfs/catalog/DC215c.pdf,https://www.thinksrs.com/downloads/pdfs/manuals/DC215m.pdf,https://www.thinksrs.com/products/dc215.html,"$4,995 ",dc215.jpg
 CS580,Voltage Controlled Current Source,100 fA to 100 mA current range,±50 V compliance voltage,Ultra-low noise design,https://www.thinksrs.com/downloads/pdfs/catalog/CS580c.pdf,https://www.thinksrs.com/downloads/pdfs/manuals/CS580m.pdf,https://www.thinksrs.com/products/cs580.html,"$4,500 ",cs580.jpg
 DC205,Precision DC Voltage Source,±100 VDC range,1 ppm/°C stability,0.0025% accuracy (1 yr),https://www.thinksrs.com/downloads/pdfs/catalog/DC205c.pdf,https://www.thinksrs.com/downloads/pdfs/manuals/DC205m.pdf,https://www.thinksrs.com/products/dc205.html,"$3,995 ",dc205.jpg
