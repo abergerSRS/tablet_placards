@@ -2,6 +2,8 @@
 
 A Jinja2-templated HTML display system for showcasing SRS (Stanford Research Systems) products on a 1024 x 600 px 7" tablet.
 
+![Mock display for a 7" tablet](preview.png)
+
 ## Files Included
 
 1. **template.html** - Jinja2 HTML template with product display layout
