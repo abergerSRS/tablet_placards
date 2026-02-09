@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1024, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SRS Product Display</title>
     <style>
         * {
@@ -12,8 +12,8 @@
         }
 
         body {
-            width: 1024px;
-            height: 600px;
+            width: 100vw;
+            height: 100vh;
             background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
@@ -38,46 +38,6 @@
             flex-shrink: 0;
         }
 
-        .category-selector {
-            flex: 1;
-            max-width: 350px;
-        }
-
-        .category-dropdown {
-            width: 100%;
-            padding: 10px 15px;
-            background: rgba(0, 217, 255, 0.1);
-            border: 2px solid rgba(0, 217, 255, 0.3);
-            border-radius: 8px;
-            color: #ffffff;
-            font-size: 14px;
-            font-family: inherit;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2300d9ff' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 15px center;
-            padding-right: 40px;
-        }
-
-        .category-dropdown:hover {
-            background: rgba(0, 217, 255, 0.15);
-            border-color: #00d9ff;
-        }
-
-        .category-dropdown:focus {
-            outline: none;
-            border-color: #00d9ff;
-            box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
-        }
-
-        .category-dropdown option {
-            background: #0f3460;
-            color: #ffffff;
-            padding: 10px;
-        }
-
         .header .logo {
             font-size: 14px;
             color: #00d9ff;
@@ -86,8 +46,223 @@
             flex-shrink: 0;
         }
 
+        /* Hamburger Menu */
+        .hamburger-btn {
+            background: rgba(0, 217, 255, 0.1);
+            border: 2px solid rgba(0, 217, 255, 0.3);
+            border-radius: 8px;
+            padding: 10px 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            width: 45px;
+            height: 45px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hamburger-btn:hover {
+            background: rgba(0, 217, 255, 0.2);
+            border-color: #00d9ff;
+        }
+
+        .hamburger-line {
+            width: 24px;
+            height: 3px;
+            background: #00d9ff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .category-menu {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100vh;
+            background: rgba(15, 52, 96, 0.98);
+            backdrop-filter: blur(10px);
+            border-right: 2px solid #00d9ff;
+            transition: left 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .category-menu.open {
+            left: 0;
+        }
+
+        .category-menu-header {
+            padding: 20px;
+            border-bottom: 2px solid #00d9ff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .category-menu-title {
+            font-size: 18px;
+            color: #00d9ff;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .close-menu-btn {
+            background: none;
+            border: none;
+            color: #00d9ff;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .close-menu-btn:hover {
+            color: #ffffff;
+            transform: rotate(90deg);
+        }
+
+        .category-menu-items {
+            padding: 10px 0;
+        }
+
+        .category-menu-item {
+            padding: 15px 20px;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .category-menu-item:hover {
+            background: rgba(0, 217, 255, 0.1);
+            border-left-color: #00d9ff;
+            padding-left: 25px;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 999;
+        }
+
+        .menu-overlay.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* Search Box */
+        .search-container {
+            flex: 1;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 10px 40px 10px 15px;
+            background: rgba(0, 217, 255, 0.1);
+            border: 2px solid rgba(0, 217, 255, 0.3);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .search-box::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #00d9ff;
+            box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+            background: rgba(0, 217, 255, 0.15);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #00d9ff;
+            font-size: 16px;
+            pointer-events: none;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            margin-top: 5px;
+            background: rgba(15, 52, 96, 0.98);
+            backdrop-filter: blur(10px);
+            border: 2px solid #00d9ff;
+            border-radius: 8px;
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 100;
+            display: none;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .search-results.visible {
+            display: block;
+        }
+
+        .search-result-item {
+            padding: 12px 15px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-item:hover {
+            background: rgba(0, 217, 255, 0.15);
+        }
+
+        .search-result-pn {
+            color: #00d9ff;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .search-result-name {
+            color: #ffffff;
+            font-size: 12px;
+        }
+
+        .search-no-results {
+            padding: 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
         .container {
-            height: calc(600px - 70px);
+            height: calc(100vh - 70px);
             overflow-y: auto;
             padding: 0;
         }
@@ -290,38 +465,190 @@
         .icon {
             font-size: 14px;
         }
+
+        /* Responsive Design */
+        /* For tablets in portrait and phones */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                padding: 10px;
+                gap: 8px;
+            }
+
+            .header h1 {
+                font-size: 20px;
+            }
+
+            .header .logo {
+                font-size: 11px;
+            }
+
+            .category-selector {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .category-dropdown {
+                font-size: 12px;
+                padding: 8px 12px;
+            }
+
+            .product-card {
+                flex-direction: column;
+                margin: 8px;
+                padding: 10px;
+            }
+
+            .product-image {
+                width: 100%;
+                height: 180px;
+            }
+
+            .product-info {
+                margin-left: 0;
+            }
+
+            .product-right-section {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                min-width: 0;
+                padding-left: 0;
+                margin-top: 10px;
+            }
+
+            .product-links {
+                flex-direction: row;
+                gap: 8px;
+            }
+
+            .product-title {
+                font-size: 18px;
+            }
+
+            .product-name {
+                font-size: 16px;
+            }
+
+            .product-features li {
+                font-size: 14px;
+            }
+
+            .product-link {
+                font-size: 11px;
+                padding: 6px 10px;
+                min-width: 90px;
+            }
+
+            .category-header {
+                font-size: 14px;
+                padding: 8px 12px;
+                margin: 8px 8px 6px 8px;
+            }
+        }
+
+        /* For very small phones */
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 18px;
+            }
+
+            .product-title {
+                font-size: 16px;
+            }
+
+            .product-name {
+                font-size: 14px;
+            }
+
+            .product-features li {
+                font-size: 12px;
+                padding: 4px 0;
+            }
+
+            .product-price {
+                font-size: 20px;
+            }
+        }
+
+        /* For large screens (ensure it doesn't get too wide) */
+        @media (min-width: 1400px) {
+            body {
+                max-width: 1400px;
+                margin: 0 auto;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="header">
+        <div class="hamburger-btn" onclick="toggleMenu()">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+        </div>
         <img src="srs_logo_white.png" alt="Stanford Research Systems" style="height: 50px;">
-        <div class="category-selector">
-            <select class="category-dropdown" onchange="scrollToCategory(this.value)">
-                <option value="">Jump to Category...</option>
-                
-                <option value="High_Voltage_Supplies">High Voltage Supplies</option>
-                
-                <option value="Laser_Optical">Laser/Optical</option>
-                
-                <option value="Lock-in_Amplifiers">Lock-in Amplifiers</option>
-                
-                <option value="Preamplifiers">Preamplifiers</option>
-                
-                <option value="Signal_Generators">Signal Generators</option>
-                
-                <option value="Small_Instrument_Modules">Small Instrument Modules</option>
-                
-                <option value="Temperature_Control">Temperature Control</option>
-                
-                <option value="Timing">Timing</option>
-                
-                <option value="Vacuum_Gas_Analysis">Vacuum/Gas Analysis</option>
-                
-                <option value="Voltage_Current_Sources">Voltage/Current Sources</option>
-                
-            </select>
+        <div class="search-container">
+            <input type="text" class="search-box" id="searchBox" placeholder="Search products (e.g., DC205, Lock-in)..." oninput="handleSearch(this.value)" onfocus="handleSearch(this.value)">
+            <span class="search-icon">🔍</span>
+            <div class="search-results" id="searchResults"></div>
         </div>
         <div class="logo">SRS Product Catalog</div>
+    </div>
+
+    <!-- Category Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+
+    <!-- Category Menu -->
+    <div class="category-menu" id="categoryMenu">
+        <div class="category-menu-header">
+            <div class="category-menu-title">Categories</div>
+            <button class="close-menu-btn" onclick="toggleMenu()">×</button>
+        </div>
+        <div class="category-menu-items">
+            
+            <div class="category-menu-item" onclick="scrollToCategoryAndClose('High_Voltage_Supplies')">
+                High Voltage Supplies
+            </div>
+            
+            <div class="category-menu-item" onclick="scrollToCategoryAndClose('Laser_Optical')">
+                Laser/Optical
+            </div>
+            
+            <div class="category-menu-item" onclick="scrollToCategoryAndClose('Lock-in_Amplifiers')">
+                Lock-in Amplifiers
+            </div>
+            
+            <div class="category-menu-item" onclick="scrollToCategoryAndClose('Preamplifiers')">
+                Preamplifiers
+            </div>
+            
+            <div class="category-menu-item" onclick="scrollToCategoryAndClose('Signal_Generators')">
+                Signal Generators
+            </div>
+            
+            <div class="category-menu-item" onclick="scrollToCategoryAndClose('Small_Instrument_Modules')">
+                Small Instrument Modules
+            </div>
+            
+            <div class="category-menu-item" onclick="scrollToCategoryAndClose('Temperature_Control')">
+                Temperature Control
+            </div>
+            
+            <div class="category-menu-item" onclick="scrollToCategoryAndClose('Timing')">
+                Timing
+            </div>
+            
+            <div class="category-menu-item" onclick="scrollToCategoryAndClose('Vacuum_Gas_Analysis')">
+                Vacuum/Gas Analysis
+            </div>
+            
+            <div class="category-menu-item" onclick="scrollToCategoryAndClose('Voltage_Current_Sources')">
+                Voltage/Current Sources
+            </div>
+            
+        </div>
     </div>
 
     <div class="container">
@@ -1424,30 +1751,301 @@
     </div>
 
     <script>
+        // Product data for search
+        const products = [
+            
+            {
+                pn: "PS375",
+                name: "High Voltage DC Power Supply",
+                category: "High Voltage Supplies",
+                url: "https://www.thinksrs.com/products/ps300.html"
+            },
+            
+            {
+                pn: "LDC501",
+                name: "Laser Diode Controller",
+                category: "Laser/Optical",
+                url: "https://www.thinksrs.com/products/ldc501.html"
+            },
+            
+            {
+                pn: "SR470",
+                name: "Laser Shutter Controller",
+                category: "Laser/Optical",
+                url: "https://www.thinksrs.com/products/sr470474.html"
+            },
+            
+            {
+                pn: "SR475",
+                name: "Laser Shutter Head",
+                category: "Laser/Optical",
+                url: "https://www.thinksrs.com/products/sr470474.html"
+            },
+            
+            {
+                pn: "SR542",
+                name: "Precision Optical Chopper",
+                category: "Laser/Optical",
+                url: "https://www.thinksrs.com/products/sr542.html"
+            },
+            
+            {
+                pn: "SR2124",
+                name: "Dual Phase Analog Lock-in Amplifier",
+                category: "Lock-in Amplifiers",
+                url: "https://www.thinksrs.com/products/sr2124.html"
+            },
+            
+            {
+                pn: "SR865A",
+                name: "4 MHz Lock-in Amplifier",
+                category: "Lock-in Amplifiers",
+                url: "https://www.thinksrs.com/products/sr865a.html"
+            },
+            
+            {
+                pn: "SR446",
+                name: "400 MHz Preamplifier",
+                category: "Preamplifiers",
+                url: "https://www.thinksrs.com/products/sr446.html"
+            },
+            
+            {
+                pn: "SR551",
+                name: "High Impedance Preamplifier",
+                category: "Preamplifiers",
+                url: "https://www.thinksrs.com/products/sr551.html"
+            },
+            
+            {
+                pn: "SR554",
+                name: "Transformer Preamplifier",
+                category: "Preamplifiers",
+                url: "https://www.thinksrs.com/products/sr554.html"
+            },
+            
+            {
+                pn: "SR556",
+                name: "Current Preamplifier",
+                category: "Preamplifiers",
+                url: "https://www.thinksrs.com/products/sr556.html"
+            },
+            
+            {
+                pn: "SR560",
+                name: "Low Noise Voltage Preamplifier",
+                category: "Preamplifiers",
+                url: "https://www.thinksrs.com/products/sr560.html"
+            },
+            
+            {
+                pn: "SG396",
+                name: "Vector RF Signal Generator",
+                category: "Signal Generators",
+                url: "https://www.thinksrs.com/products/sg390.html"
+            },
+            
+            {
+                pn: "SIM900",
+                name: "Mainframe",
+                category: "Small Instrument Modules",
+                url: "https://www.thinksrs.com/products/sim900.html"
+            },
+            
+            {
+                pn: "SIM921",
+                name: "AC Resistance Bridge",
+                category: "Small Instrument Modules",
+                url: "https://www.thinksrs.com/products/sim921.html"
+            },
+            
+            {
+                pn: "SIM928",
+                name: "Isolated Voltage Source",
+                category: "Small Instrument Modules",
+                url: "https://www.thinksrs.com/products/sim928.html"
+            },
+            
+            {
+                pn: "SIM960",
+                name: "Analog PID Controller",
+                category: "Small Instrument Modules",
+                url: "https://www.thinksrs.com/products/sim960.html"
+            },
+            
+            {
+                pn: "SIM965",
+                name: "Analog Bessel & Butterworth Filter",
+                category: "Small Instrument Modules",
+                url: "https://www.thinksrs.com/products/sim965.html"
+            },
+            
+            {
+                pn: "SIM983",
+                name: "1 MHz Scaling Amplifier",
+                category: "Small Instrument Modules",
+                url: "https://www.thinksrs.com/products/sim983.html"
+            },
+            
+            {
+                pn: "SIM984",
+                name: "Isolation Amplifier",
+                category: "Small Instrument Modules",
+                url: "https://www.thinksrs.com/products/sim984.html"
+            },
+            
+            {
+                pn: "SIM9B2",
+                name: "Double-wide Prototype Kit",
+                category: "Small Instrument Modules",
+                url: "https://www.thinksrs.com/products/sim9b19b2.html"
+            },
+            
+            {
+                pn: "CTC100",
+                name: "Cryogenic Temperature Controller",
+                category: "Temperature Control",
+                url: "https://www.thinksrs.com/products/ctc100.html"
+            },
+            
+            {
+                pn: "DG535",
+                name: "Delay Generator",
+                category: "Timing",
+                url: "https://www.thinksrs.com/products/dg535.html"
+            },
+            
+            {
+                pn: "DG645",
+                name: "Delay Generator",
+                category: "Timing",
+                url: "https://www.thinksrs.com/products/dg645.html"
+            },
+            
+            {
+                pn: "BGA244",
+                name: "Binary Gas Analyzer",
+                category: "Vacuum/Gas Analysis",
+                url: "https://www.thinksrs.com/products/bga244.html"
+            },
+            
+            {
+                pn: "RGA120",
+                name: "Resigual Gas Analyzer",
+                category: "Vacuum/Gas Analysis",
+                url: "https://www.thinksrs.com/products/rga120.html"
+            },
+            
+            {
+                pn: "CS580",
+                name: "Voltage Controlled Current Source",
+                category: "Voltage/Current Sources",
+                url: "https://www.thinksrs.com/products/cs580.html"
+            },
+            
+            {
+                pn: "DC205",
+                name: "Precision DC Voltage Source",
+                category: "Voltage/Current Sources",
+                url: "https://www.thinksrs.com/products/dc205.html"
+            },
+            
+            {
+                pn: "DC215",
+                name: "DC Voltage/Current Source",
+                category: "Voltage/Current Sources",
+                url: "https://www.thinksrs.com/products/dc215.html"
+            }
+            
+        ];
+
+        // Toggle category menu
+        function toggleMenu() {
+            const menu = document.getElementById('categoryMenu');
+            const overlay = document.getElementById('menuOverlay');
+            menu.classList.toggle('open');
+            overlay.classList.toggle('visible');
+        }
+
+        // Scroll to category and close menu
+        function scrollToCategoryAndClose(categoryId) {
+            scrollToCategory(categoryId);
+            toggleMenu();
+        }
+
+        // Scroll to category function
         function scrollToCategory(categoryId) {
             if (!categoryId) return;
             
             const element = document.getElementById(categoryId);
             if (element) {
-                // Get the container element
                 const container = document.querySelector('.container');
-                
-                // Calculate the position to scroll to
                 const elementTop = element.offsetTop;
                 const containerTop = container.offsetTop;
                 
-                // Scroll the container to the category
                 container.scrollTo({
                     top: elementTop - containerTop - 10,
                     behavior: 'smooth'
                 });
             }
-            
-            // Reset dropdown to default after scrolling
-            setTimeout(() => {
-                document.querySelector('.category-dropdown').value = '';
-            }, 300);
         }
+
+        // Search functionality
+        function handleSearch(query) {
+            const resultsDiv = document.getElementById('searchResults');
+            
+            if (!query || query.trim().length < 1) {
+                resultsDiv.classList.remove('visible');
+                return;
+            }
+
+            const searchTerm = query.toLowerCase().trim();
+            const matches = products.filter(product => 
+                product.pn.toLowerCase().includes(searchTerm) ||
+                product.name.toLowerCase().includes(searchTerm) ||
+                product.category.toLowerCase().includes(searchTerm)
+            );
+
+            if (matches.length === 0) {
+                resultsDiv.innerHTML = '<div class="search-no-results">No products found</div>';
+                resultsDiv.classList.add('visible');
+                return;
+            }
+
+            let html = '';
+            matches.slice(0, 10).forEach(product => {
+                html += `
+                    <div class="search-result-item" onclick="window.open('${product.url}', '_blank'); closeSearch();">
+                        <div class="search-result-pn">${product.pn}</div>
+                        <div class="search-result-name">${product.name}</div>
+                    </div>
+                `;
+            });
+
+            resultsDiv.innerHTML = html;
+            resultsDiv.classList.add('visible');
+        }
+
+        // Close search results
+        function closeSearch() {
+            document.getElementById('searchResults').classList.remove('visible');
+            document.getElementById('searchBox').value = '';
+        }
+
+        // Close search when clicking outside
+        document.addEventListener('click', function(event) {
+            const searchContainer = document.querySelector('.search-container');
+            const searchBox = document.getElementById('searchBox');
+            
+            if (!searchContainer.contains(event.target)) {
+                document.getElementById('searchResults').classList.remove('visible');
+            }
+        });
+
+        // Prevent search results from closing when clicking inside
+        document.getElementById('searchBox').addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
     </script>
 </body>
 </html>
