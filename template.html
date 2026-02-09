@@ -624,7 +624,7 @@
                     {{ product.category }}
                 </div>
             {% endif %}
-        <div class="product-card" onclick="window.open('{{ product.product_page_url }}', '_blank')">
+        <div class="product-card" id="product-{{ product.product_pn }}" onclick="window.open('{{ product.product_page_url }}', '_blank')">
             <div class="product-image">
                 {% if product.thumbnail %}
                 <img src="images/{{ product.thumbnail }}" alt="{{ product.product_pn }}">
@@ -732,7 +732,7 @@
             let html = '';
             matches.slice(0, 10).forEach(product => {
                 html += `
-                    <div class="search-result-item" onclick="window.open('${product.url}', '_blank'); closeSearch();">
+                    <div class="search-result-item" onclick="scrollToProduct('${product.pn}'); closeSearch();">
                         <div class="search-result-pn">${product.pn}</div>
                         <div class="search-result-name">${product.name}</div>
                     </div>
@@ -741,6 +741,27 @@
 
             resultsDiv.innerHTML = html;
             resultsDiv.classList.add('visible');
+        }
+
+        // Scroll to specific product
+        function scrollToProduct(productPn) {
+            const productCard = document.getElementById('product-' + productPn);
+            if (productCard) {
+                const container = document.querySelector('.container');
+                const cardTop = productCard.offsetTop;
+                const containerTop = container.offsetTop;
+                
+                container.scrollTo({
+                    top: cardTop - containerTop - 20,
+                    behavior: 'smooth'
+                });
+
+                // Highlight the card briefly
+                productCard.style.boxShadow = '0 0 30px rgba(0, 217, 255, 0.8)';
+                setTimeout(() => {
+                    productCard.style.boxShadow = '';
+                }, 2000);
+            }
         }
 
         // Close search results

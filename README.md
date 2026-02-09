@@ -138,6 +138,8 @@ When a result is clicked:
 - Clears the search box
 - Closes the search results dropdown
 
+To visit the product page, click anywhere on the highlighted product card.
+
 ### Customizing Search Behavior
 
 To modify search behavior, edit the `handleSearch()` function in `template.html`:
