@@ -10,11 +10,25 @@ from jinja2 import Template
 def load_products(csv_file):
     """Load product data from CSV file"""
     products = []
-    with open(csv_file, 'r', encoding='utf-8') as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            products.append(row)
-    return products
+    
+    # Try different encodings
+    encodings_to_try = ['utf-8-sig', 'utf-8', 'latin-1', 'cp1252']
+    
+    for encoding in encodings_to_try:
+        try:
+            with open(csv_file, 'r', encoding=encoding) as f:
+                reader = csv.DictReader(f)
+                products = list(reader)
+                
+                if products:
+                    # Show what columns we found
+                    print(f"Successfully read CSV with {encoding} encoding")
+                    print(f"Found columns: {list(products[0].keys())}")
+                    return products
+        except Exception as e:
+            continue
+    
+    raise Exception(f"Could not read CSV file with any standard encoding")
 
 def render_template(template_file, products):
     """Render Jinja2 template with product data"""
@@ -26,7 +40,11 @@ def render_template(template_file, products):
 
 def main():
     # Load product data from CSV
-    products = load_products('products.csv')
+    try:
+        products = load_products('products.csv')
+    except Exception as e:
+        print(f"Error loading CSV: {e}")
+        return
     
     # Render template
     html_output = render_template('template.html', products)
@@ -35,7 +53,7 @@ def main():
     with open('product_display.html', 'w', encoding='utf-8') as f:
         f.write(html_output)
     
-    print(f"Generated product_display.html with {len(products)} products")
+    print(f"\nGenerated product_display.html with {len(products)} products")
     print("\nProducts included:")
     for product in products:
         print(f"  - {product['product_pn']}: {product['product_name']}")
