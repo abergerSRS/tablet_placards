@@ -27,6 +27,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 30px;
         }
 
         .header h1 {
@@ -34,6 +35,47 @@
             color: #ffffff;
             font-weight: 600;
             letter-spacing: 1px;
+            flex-shrink: 0;
+        }
+
+        .category-selector {
+            flex: 1;
+            max-width: 350px;
+        }
+
+        .category-dropdown {
+            width: 100%;
+            padding: 10px 15px;
+            background: rgba(0, 217, 255, 0.1);
+            border: 2px solid rgba(0, 217, 255, 0.3);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 14px;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2300d9ff' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            padding-right: 40px;
+        }
+
+        .category-dropdown:hover {
+            background: rgba(0, 217, 255, 0.15);
+            border-color: #00d9ff;
+        }
+
+        .category-dropdown:focus {
+            outline: none;
+            border-color: #00d9ff;
+            box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+        }
+
+        .category-dropdown option {
+            background: #0f3460;
+            color: #ffffff;
+            padding: 10px;
         }
 
         .header .logo {
@@ -41,6 +83,7 @@
             color: #00d9ff;
             text-transform: uppercase;
             letter-spacing: 2px;
+            flex-shrink: 0;
         }
 
         .container {
@@ -208,6 +251,30 @@
             background: rgba(0, 217, 255, 0.5);
         }
 
+        /* Category headers */
+        .category-header {
+            background: rgba(0, 217, 255, 0.15);
+            border-left: 4px solid #00d9ff;
+            padding: 12px 20px;
+            margin: 20px 20px 10px 20px;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #00d9ff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            scroll-margin-top: 20px;
+        }
+
+        .category-header:first-of-type {
+            margin-top: 10px;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
         /* Icons */
         .icon {
             font-size: 14px;
@@ -216,12 +283,27 @@
 </head>
 <body>
     <div class="header">
-        <img src="srs_logo_white.png" alt="Stanford Research Systems" style="height: 50px;">        
+        <img src="srs_logo_white.png" alt="Stanford Research Systems" style="height: 50px;">
+        <div class="category-selector">
+            <select class="category-dropdown" onchange="scrollToCategory(this.value)">
+                <option value="">Jump to Category...</option>
+                {% for category in categories %}
+                <option value="{{ category|replace(' ', '_')|replace('/', '_') }}">{{ category }}</option>
+                {% endfor %}
+            </select>
+        </div>
         <div class="logo">SRS Product Catalog</div>
     </div>
 
     <div class="container">
+        {% set current_category = namespace(value='') %}
         {% for product in products %}
+            {% if product.category != current_category.value %}
+                {% set current_category.value = product.category %}
+                <div class="category-header" id="{{ product.category|replace(' ', '_')|replace('/', '_') }}">
+                    {{ product.category }}
+                </div>
+            {% endif %}
         <div class="product-card" onclick="window.open('{{ product.product_page_url }}', '_blank')">
             <div class="product-image">
                 {% if product.thumbnail %}
@@ -254,11 +336,38 @@
                             <span>Manual</span>
                         </a>
                     </div>
-                    <div class="product-price">${{ product.price }}</div>
+                    <div class="product-price">{{ product.price }}</div>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
+
+    <script>
+        function scrollToCategory(categoryId) {
+            if (!categoryId) return;
+            
+            const element = document.getElementById(categoryId);
+            if (element) {
+                // Get the container element
+                const container = document.querySelector('.container');
+                
+                // Calculate the position to scroll to
+                const elementTop = element.offsetTop;
+                const containerTop = container.offsetTop;
+                
+                // Scroll the container to the category
+                container.scrollTo({
+                    top: elementTop - containerTop - 10,
+                    behavior: 'smooth'
+                });
+            }
+            
+            // Reset dropdown to default after scrolling
+            setTimeout(() => {
+                document.querySelector('.category-dropdown').value = '';
+            }, 300);
+        }
+    </script>
 </body>
 </html>

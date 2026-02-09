@@ -2,8 +2,6 @@
 
 A Jinja2-templated HTML display system for showcasing SRS (Stanford Research Systems) products on a 1024 x 600 px 7" tablet.
 
-![Mock display for a 7" tablet](preview.png)
-
 ## Files Included
 
 1. **template.html** - Jinja2 HTML template with product display layout
@@ -15,7 +13,10 @@ A Jinja2-templated HTML display system for showcasing SRS (Stanford Research Sys
 
 The CSV file contains the following columns:
 
+The CSV file contains the following columns:
+
 - `product_pn` - Product part number (e.g., SR542)
+- `category` - Product category for grouping and navigation
 - `product_name` - Full product name (e.g., Precision Optical Chopper)
 - `bullet_1` - First feature/specification
 - `bullet_2` - Second feature/specification
@@ -54,6 +55,15 @@ Simply open `product_display.html` in a browser on your 7" tablet.
    ```
 3. Open the newly generated `product_display.html`
 
+## Category Navigation
+
+The display includes a dropdown menu in the header that lets you quickly jump to any product category. Categories are automatically extracted from the CSV and products are sorted by category, then by part number.
+
+**To add/modify categories:**
+1. Edit the `category` column in `products.csv`
+2. Run `generate.py` to rebuild the HTML
+3. The dropdown menu and category headers update automatically
+
 ## Adding Product Images
 
 1. Create an `images/` folder in the same directory as the HTML file
@@ -66,13 +76,16 @@ Simply open `product_display.html` in a browser on your 7" tablet.
 - **Layout**: Scrollable card-based design
 - **Design**: Modern dark theme with cyan accents
 - **Features**:
+  - **Category Navigation** - Dropdown menu to jump to product categories
+  - **Automatic Sorting** - Products grouped by category
+  - **Category Headers** - Visual separators between product groups
   - Clickable product cards (click anywhere to visit product page)
   - Product images (200x150px display area)
   - Product name and part number
   - Three bullet-point features
   - Direct links to datasheets and manuals (with event propagation stopping)
   - Pricing information
-  - Smooth hover effects
+  - Smooth hover effects and scrolling
   - Custom scrollbar
 
 ## Customization

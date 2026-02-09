@@ -30,13 +30,13 @@ def load_products(csv_file):
     
     raise Exception(f"Could not read CSV file with any standard encoding")
 
-def render_template(template_file, products):
+def render_template(template_file, products, categories):
     """Render Jinja2 template with product data"""
     with open(template_file, 'r', encoding='utf-8') as f:
         template_content = f.read()
     
     template = Template(template_content)
-    return template.render(products=products)
+    return template.render(products=products, categories=categories)
 
 def main():
     # Load product data from CSV
@@ -46,17 +46,30 @@ def main():
         print(f"Error loading CSV: {e}")
         return
     
+    # Sort products by category, then by product_pn
+    products.sort(key=lambda x: (x.get('category', ''), x.get('product_pn', '')))
+    
+    # Extract unique categories in order
+    categories = []
+    seen = set()
+    for product in products:
+        cat = product.get('category', '')
+        if cat and cat not in seen:
+            categories.append(cat)
+            seen.add(cat)
+    
     # Render template
-    html_output = render_template('template.html', products)
+    html_output = render_template('template.html', products, categories)
     
     # Write output HTML
     with open('product_display.html', 'w', encoding='utf-8') as f:
         f.write(html_output)
     
     print(f"\nGenerated product_display.html with {len(products)} products")
+    print(f"Categories: {', '.join(categories)}")
     print("\nProducts included:")
     for product in products:
-        print(f"  - {product['product_pn']}: {product['product_name']}")
+        print(f"  - {product['product_pn']}: {product['product_name']} ({product.get('category', 'N/A')})")
 
 if __name__ == '__main__':
     main()
