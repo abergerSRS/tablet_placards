@@ -1,6 +1,11 @@
 # SRS Product Display System
 
-A Jinja2-templated HTML display system for showcasing SRS (Stanford Research Systems) products on a 1024 x 600 px 7" tablet.
+A fully-templated HTML display system for showcasing SRS (Stanford Research Systems) products on a 1024 x 600 px 7" tablet.
+
+![Mock display for a 7" tablet](preview.png)
+
+Products are listed in a CSV file and HTML file is automatically-generated from the CSV and an HTML template
+  (which defines the aesthetic style of the page).
 
 ## Files Included
 
@@ -24,22 +29,12 @@ The CSV file contains the following columns:
 - `datasheet_link` - URL to product datasheet PDF
 - `manual_link` - URL to product manual PDF
 - `product_page_url` - URL to product page (card click destination)
-- `price` - Product price (formatted as $X,XXX)
+- `price` - Product price (formatted as X,XXX)
 - `thumbnail` - Filename of product image (placed in images/ folder)
 
 ## Products Included
 
-All 9 requested SRS products:
-
-1. **DC215** - DC Voltage/Current Source
-2. **CS580** - Voltage Controlled Current Source
-3. **DC205** - Precision DC Voltage Source
-4. **SR865A** - 4 MHz Lock-in Amplifier
-5. **SR2124A** - Dual Phase Analog Lock-in Amplifier
-6. **SR542** - Precision Optical Chopper
-7. **LDC501** - Laser Diode Controller
-8. **SR446** - 400 MHz Preamplifier
-9. **SR560** - Low Noise Voltage Preamplifier
+All 29 products listed on APS March Meeting 2026 Show Checklist
 
 ## Usage
 
@@ -118,7 +113,7 @@ body {
 - No external dependencies required for viewing HTML
 - Links point to actual SRS documentation URLs
 - Product data scraped from thinksrs.com (February 2026)
-- Prices are approximate U.S. list prices
+- Prices are U.S. list prices (as of February 2026)
 
 ## Browser Compatibility
 

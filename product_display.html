@@ -27,6 +27,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 30px;
         }
 
         .header h1 {
@@ -34,6 +35,47 @@
             color: #ffffff;
             font-weight: 600;
             letter-spacing: 1px;
+            flex-shrink: 0;
+        }
+
+        .category-selector {
+            flex: 1;
+            max-width: 350px;
+        }
+
+        .category-dropdown {
+            width: 100%;
+            padding: 10px 15px;
+            background: rgba(0, 217, 255, 0.1);
+            border: 2px solid rgba(0, 217, 255, 0.3);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 14px;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2300d9ff' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            padding-right: 40px;
+        }
+
+        .category-dropdown:hover {
+            background: rgba(0, 217, 255, 0.15);
+            border-color: #00d9ff;
+        }
+
+        .category-dropdown:focus {
+            outline: none;
+            border-color: #00d9ff;
+            box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+        }
+
+        .category-dropdown option {
+            background: #0f3460;
+            color: #ffffff;
+            padding: 10px;
         }
 
         .header .logo {
@@ -41,6 +83,7 @@
             color: #00d9ff;
             text-transform: uppercase;
             letter-spacing: 2px;
+            flex-shrink: 0;
         }
 
         .container {
@@ -208,6 +251,30 @@
             background: rgba(0, 217, 255, 0.5);
         }
 
+        /* Category headers */
+        .category-header {
+            background: rgba(0, 217, 255, 0.15);
+            border-left: 4px solid #00d9ff;
+            padding: 12px 20px;
+            margin: 20px 20px 10px 20px;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #00d9ff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            scroll-margin-top: 20px;
+        }
+
+        .category-header:first-of-type {
+            margin-top: 10px;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
         /* Icons */
         .icon {
             font-size: 14px;
@@ -216,992 +283,45 @@
 </head>
 <body>
     <div class="header">
-        <img src="srs_logo_white.png" alt="Stanford Research Systems" style="height: 50px;">        
+        <img src="srs_logo_white.png" alt="Stanford Research Systems" style="height: 50px;">
+        <div class="category-selector">
+            <select class="category-dropdown" onchange="scrollToCategory(this.value)">
+                <option value="">Jump to Category...</option>
+                
+                <option value="High_Voltage_Supplies">High Voltage Supplies</option>
+                
+                <option value="Laser_Optical">Laser/Optical</option>
+                
+                <option value="Lock-in_Amplifiers">Lock-in Amplifiers</option>
+                
+                <option value="Preamplifiers">Preamplifiers</option>
+                
+                <option value="Signal_Generators">Signal Generators</option>
+                
+                <option value="Small_Instrument_Modules">Small Instrument Modules</option>
+                
+                <option value="Temperature_Control">Temperature Control</option>
+                
+                <option value="Timing">Timing</option>
+                
+                <option value="Vacuum_Gas_Analysis">Vacuum/Gas Analysis</option>
+                
+                <option value="Voltage_Current_Sources">Voltage/Current Sources</option>
+                
+            </select>
+        </div>
         <div class="logo">SRS Product Catalog</div>
     </div>
 
     <div class="container">
         
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/dc215.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/dc215.jpg" alt="DC215">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">DC215</div>
-                    <div class="product-name">DC Voltage/Current Source</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>±32 V and ±240 mA</li>
-                    <li>4-quadrant operation (source/sink)</li>
-                    <li>GPIB, Ethernet, & RS-232</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/DC215c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/DC215m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$3,890</div>
-                </div>
-            </div>
-        </div>
         
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/cs580.html', '_blank')">
-            <div class="product-image">
+            
                 
-                <img src="images/cs580.jpg" alt="CS580">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">CS580</div>
-                    <div class="product-name">Voltage Controlled Current Source</div>
+                <div class="category-header" id="High_Voltage_Supplies">
+                    High Voltage Supplies
                 </div>
-
-                <ul class="product-features">
-                    <li>100 fA to 100 mA current range</li>
-                    <li>±50 V compliance voltage</li>
-                    <li>Up to 200 kHz bandwidth</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/CS580c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/CS580m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$4,495</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/dc205.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/dc205.jpg" alt="DC205">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">DC205</div>
-                    <div class="product-name">Precision DC Voltage Source</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>±100 VDC range</li>
-                    <li>1 ppm/°C stability</li>
-                    <li>0.0025% accuracy (1 yr)</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/DC205c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/DC205m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$2,995</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sr865a.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/sr865a.jpg" alt="SR865A">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">SR865A</div>
-                    <div class="product-name">4 MHz Lock-in Amplifier</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>1 mHz to 4 MHz</li>
-                    <li>1 µs to 30 ks time constants</li>
-                    <li>2.5 nV/√Hz at 1 kHz</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR865Ac.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR865Am.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$9,150</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sr2124.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/sr2124.jpg" alt="SR2124">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">SR2124</div>
-                    <div class="product-name">Dual Phase Analog Lock-in Amplifier</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>All-analog design - no digital noise</li>
-                    <li>0.2 Hz to 200 kHz measurement range</li>
-                    <li>Harmonic detection (f, 2f, 3f)</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR2124c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR2124m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$9,100</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sr542.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/sr542.jpg" alt="SR542">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">SR542</div>
-                    <div class="product-name">Precision Optical Chopper</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>0.4 Hz to 20 kHz chop frequency</li>
-                    <li>Low phase jitter</li>
-                    <li>USB interface</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR542c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR542m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$2,995</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/ldc501.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/ldc501.jpg" alt="LDC501">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">LDC501</div>
-                    <div class="product-name">Laser Diode Controller</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>500 mA current source</li>
-                    <li>Ultra-low drift (<10 ppm/°C)</li>
-                    <li>36 W TEC controller</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/LDC500c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/LDC501m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$3,500</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sr446.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/sr446.jpg" alt="SR446">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">SR446</div>
-                    <div class="product-name">400 MHz Preamplifier</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>Gain from 1 to 100 (0 to +40 dB)</li>
-                    <li>3.3 nV/√Hz input noise (@1 MHz)</li>
-                    <li>Differential output</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR446c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR446m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$1,995</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sr560.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/sr560.jpg" alt="SR560">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">SR560</div>
-                    <div class="product-name">Low Noise Voltage Preamplifier</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>4 nV/√Hz input noise</li>
-                    <li>1 MHz bandwidth</li>
-                    <li>Line or battery operation</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR560c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR560m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$3,095</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/ctc100.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/ctc100.jpg" alt="CTC100">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">CTC100</div>
-                    <div class="product-name">Cryogenic Temperature Controller</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>4 temperature sensor inputs</li>
-                    <li>Up to 6 feedback control loops</li>
-                    <li>Data logging</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/CTC100c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/CTC100m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$4,700</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sr551.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/sr551.png" alt="SR551">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">SR551</div>
-                    <div class="product-name">High Impedance Preamplifier</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>>1 TΩ input impedance</li>
-                    <li>Gain of x10</li>
-                    <li>1 MHz bandwidth</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR551c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR550551552m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$750</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sr554.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/sr554.jpg" alt="SR554">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">SR554</div>
-                    <div class="product-name">Transformer Preamplifier</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>Transformer-coupled input</li>
-                    <li>0.1 nV/√Hz input noise</li>
-                    <li>For source impedances 0.05 Ω -- 1 kΩ</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR554c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR554m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$2,695</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sr556.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/sr556.jpg" alt="SR556">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">SR556</div>
-                    <div class="product-name">Current Preamplifier</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>1 V/nA fixed gain</li>
-                    <li>5 fA/√Hz input noise</li>
-                    <li>Bias voltage input</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR556c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR555556m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$1,095</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sr470474.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/sr470.jpg" alt="SR470">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">SR470</div>
-                    <div class="product-name">Laser Shutter Controller</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>Microprocessor-controlled timing</li>
-                    <li>GPIB, RS-232, Ethernet</li>
-                    <li>4 ms to 10 ks exposure (0.1 ms resolution)</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR470474c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR470m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$1,995</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sr470474.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/sr475.jpg" alt="SR475">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">SR475</div>
-                    <div class="product-name">Laser Shutter Head</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>Ultra-low vibration</li>
-                    <li>>10 M cycle lifetime</li>
-                    <li>Easy-to-align 3 mm aperture</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR470474c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR475_476m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$995</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/dg535.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/dg535.jpg" alt="DG535">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">DG535</div>
-                    <div class="product-name">Delay Generator</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>Four channels</li>
-                    <li>5 ps delay resolution</li>
-                    <li><100 ps rms jitter</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/DG535c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/DG535m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$4,495</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/dg645.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/dg645.jpg" alt="DG645">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">DG645</div>
-                    <div class="product-name">Delay Generator</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>4 pulse, 8 delay outputs</li>
-                    <li>Trigger rates to 10 MHz</li>
-                    <li><25 ps rms jitter</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/DG645c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/DG645m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$4,995</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sg390.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/sg396.jpg" alt="SG396">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">SG396</div>
-                    <div class="product-name">Vector RF Signal Generator</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>Up to 6 GHz output</li>
-                    <li>Analog and vector modulation</li>
-                    <li>I/Q modulation inputs</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SG390c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SG390m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$9,900</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/rga120.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/rga120.png" alt="RGA120">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">RGA120</div>
-                    <div class="product-name">Resigual Gas Analyzer</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>5E-14 Torr detection limit</li>
-                    <li>New RGASoft Windows Software</li>
-                    <li>Built-in I/O, Relay, GPIO signals</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/RGA120c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/RGA120m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$5,450</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sim900.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/sim900.jpg" alt="SIM900">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">SIM900</div>
-                    <div class="product-name">Mainframe</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>8 module slots</li>
-                    <li>10 MHz Reference Input</li>
-                    <li>GPIB, RS-232</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM900c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM900m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$2,995</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sim921.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/sim921.jpg" alt="SIM921">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">SIM921</div>
-                    <div class="product-name">AC Resistance Bridge</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>Accurate millikelvin thermometry</li>
-                    <li>µV/pA excitation</li>
-                    <li>Measurements from 1 mΩ to 100 MΩ</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM921c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM921m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$2,995</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sim928.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/sim928.jpg" alt="SIM928">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">SIM928</div>
-                    <div class="product-name">Isolated Voltage Source</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>±20 V isolated voltage source</li>
-                    <li>Ultra-low noise output</li>
-                    <li>Battery lifetime: 1000 cycles</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM928c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM928m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$1,995</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sim960.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/sim960.jpg" alt="SIM960">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">SIM960</div>
-                    <div class="product-name">Analog PID Controller</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>100 kHz bandwidth</li>
-                    <li>P, I, D & Offset settable to 0.5%</li>
-                    <li>Anti-windup (fast saturation recovery)</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM960c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM960m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$2,595</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sim965.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/sim965.jpg" alt="SIM965">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">SIM965</div>
-                    <div class="product-name">Analog Bessel & Butterworth Filter</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>1 MHz bandwidth</li>
-                    <li>Low-pass or High-pass</li>
-                    <li>12, 24, 36, or 48 dB/oct</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM965c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM965m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$2,295</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sim983.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/sim983.jpg" alt="SIM983">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">SIM983</div>
-                    <div class="product-name">1 MHz Scaling Amplifier</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>Adjustable gain and offset</li>
-                    <li>V = G x (V<sub>in</sub> + V<sub>os</sub)</li>
-                    <li>1 MHz bandwidth</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM983c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM983m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$1,795</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sim984.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/sim984.jpg" alt="SIM984">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">SIM984</div>
-                    <div class="product-name">Isolation Amplifier</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>Isolation voltage up to ±1000 V</li>
-                    <li>1 MHz bandwidth</li>
-                    <li>Gain of x1, x10, or x100</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM984c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM984m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$1,795</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sim9b19b2.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/sim9b1_9b2.jpg" alt="SIM9B2">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">SIM9B2</div>
-                    <div class="product-name">Double-wide Prototype Kit</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>Ideal for custom circuits</li>
-                    <li>Also available in single-wide</li>
-                    <li></li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM9B19B2c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM9B19B2m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$150</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/bga244.html', '_blank')">
-            <div class="product-image">
-                
-                <img src="images/bga244.jpg" alt="BGA244">
-                
-            </div>
-
-            <div class="product-info">
-                <div class="product-header">
-                    <div class="product-title">BGA244</div>
-                    <div class="product-name">Binary Gas Analyzer</div>
-                </div>
-
-                <ul class="product-features">
-                    <li>Gas concentration analyzer</li>
-                    <li>Contains data for nearly 500 gases</li>
-                    <li>0.01% typ. concentration error</li>
-                </ul>
-
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/BGA244c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/BGA244m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$4,950</div>
-                </div>
-            </div>
-        </div>
-        
+            
         <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/ps300.html', '_blank')">
             <div class="product-image">
                 
@@ -1237,6 +357,1086 @@
             </div>
         </div>
         
+            
+                
+                <div class="category-header" id="Laser_Optical">
+                    Laser/Optical
+                </div>
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/ldc501.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/ldc501.jpg" alt="LDC501">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">LDC501</div>
+                    <div class="product-name">Laser Diode Controller</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>500 mA current source</li>
+                    <li>Ultra-low drift (<10 ppm/°C)</li>
+                    <li>36 W TEC controller</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/LDC500c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/LDC501m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$3,500</div>
+                </div>
+            </div>
+        </div>
+        
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sr470474.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/sr470.jpg" alt="SR470">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">SR470</div>
+                    <div class="product-name">Laser Shutter Controller</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>Microprocessor-controlled timing</li>
+                    <li>GPIB, RS-232, Ethernet</li>
+                    <li>4 ms to 10 ks exposure (0.1 ms resolution)</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR470474c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR470m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$1,995</div>
+                </div>
+            </div>
+        </div>
+        
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sr470474.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/sr475.jpg" alt="SR475">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">SR475</div>
+                    <div class="product-name">Laser Shutter Head</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>Ultra-low vibration</li>
+                    <li>>10 M cycle lifetime</li>
+                    <li>Easy-to-align 3 mm aperture</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR470474c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR475_476m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$995</div>
+                </div>
+            </div>
+        </div>
+        
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sr542.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/sr542.jpg" alt="SR542">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">SR542</div>
+                    <div class="product-name">Precision Optical Chopper</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>0.4 Hz to 20 kHz chop frequency</li>
+                    <li>Low phase jitter</li>
+                    <li>USB interface</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR542c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR542m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$2,995</div>
+                </div>
+            </div>
+        </div>
+        
+            
+                
+                <div class="category-header" id="Lock-in_Amplifiers">
+                    Lock-in Amplifiers
+                </div>
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sr2124.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/sr2124.jpg" alt="SR2124">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">SR2124</div>
+                    <div class="product-name">Dual Phase Analog Lock-in Amplifier</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>All-analog design - no digital noise</li>
+                    <li>0.2 Hz to 200 kHz measurement range</li>
+                    <li>Harmonic detection (f, 2f, 3f)</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR2124c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR2124m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$9,100</div>
+                </div>
+            </div>
+        </div>
+        
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sr865a.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/sr865a.jpg" alt="SR865A">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">SR865A</div>
+                    <div class="product-name">4 MHz Lock-in Amplifier</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>1 mHz to 4 MHz</li>
+                    <li>1 µs to 30 ks time constants</li>
+                    <li>2.5 nV/√Hz at 1 kHz</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR865Ac.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR865Am.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$9,150</div>
+                </div>
+            </div>
+        </div>
+        
+            
+                
+                <div class="category-header" id="Preamplifiers">
+                    Preamplifiers
+                </div>
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sr446.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/sr446.jpg" alt="SR446">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">SR446</div>
+                    <div class="product-name">400 MHz Preamplifier</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>Gain from 1 to 100 (0 to +40 dB)</li>
+                    <li>3.3 nV/√Hz input noise (@1 MHz)</li>
+                    <li>Differential output</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR446c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR446m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$1,995</div>
+                </div>
+            </div>
+        </div>
+        
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sr551.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/sr551.png" alt="SR551">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">SR551</div>
+                    <div class="product-name">High Impedance Preamplifier</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>>1 TΩ input impedance</li>
+                    <li>Gain of x10</li>
+                    <li>1 MHz bandwidth</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR551c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR550551552m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$750</div>
+                </div>
+            </div>
+        </div>
+        
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sr554.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/sr554.jpg" alt="SR554">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">SR554</div>
+                    <div class="product-name">Transformer Preamplifier</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>Transformer-coupled input</li>
+                    <li>0.1 nV/√Hz input noise</li>
+                    <li>For source impedances 0.05 Ω -- 1 kΩ</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR554c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR554m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$2,695</div>
+                </div>
+            </div>
+        </div>
+        
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sr556.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/sr556.jpg" alt="SR556">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">SR556</div>
+                    <div class="product-name">Current Preamplifier</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>1 V/nA fixed gain</li>
+                    <li>5 fA/√Hz input noise</li>
+                    <li>Bias voltage input</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR556c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR555556m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$1,095</div>
+                </div>
+            </div>
+        </div>
+        
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sr560.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/sr560.jpg" alt="SR560">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">SR560</div>
+                    <div class="product-name">Low Noise Voltage Preamplifier</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>4 nV/√Hz input noise</li>
+                    <li>1 MHz bandwidth</li>
+                    <li>Line or battery operation</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR560c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR560m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$3,095</div>
+                </div>
+            </div>
+        </div>
+        
+            
+                
+                <div class="category-header" id="Signal_Generators">
+                    Signal Generators
+                </div>
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sg390.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/sg396.jpg" alt="SG396">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">SG396</div>
+                    <div class="product-name">Vector RF Signal Generator</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>Up to 6 GHz output</li>
+                    <li>Analog and vector modulation</li>
+                    <li>I/Q modulation inputs</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SG390c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SG390m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$9,900</div>
+                </div>
+            </div>
+        </div>
+        
+            
+                
+                <div class="category-header" id="Small_Instrument_Modules">
+                    Small Instrument Modules
+                </div>
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sim900.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/sim900.jpg" alt="SIM900">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">SIM900</div>
+                    <div class="product-name">Mainframe</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>8 module slots</li>
+                    <li>10 MHz Reference Input</li>
+                    <li>GPIB, RS-232</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM900c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM900m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$2,995</div>
+                </div>
+            </div>
+        </div>
+        
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sim921.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/sim921.jpg" alt="SIM921">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">SIM921</div>
+                    <div class="product-name">AC Resistance Bridge</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>Accurate millikelvin thermometry</li>
+                    <li>µV/pA excitation</li>
+                    <li>Measurements from 1 mΩ to 100 MΩ</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM921c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM921m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$2,995</div>
+                </div>
+            </div>
+        </div>
+        
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sim928.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/sim928.jpg" alt="SIM928">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">SIM928</div>
+                    <div class="product-name">Isolated Voltage Source</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>±20 V isolated voltage source</li>
+                    <li>Ultra-low noise output</li>
+                    <li>Battery lifetime: 1000 cycles</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM928c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM928m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$1,995</div>
+                </div>
+            </div>
+        </div>
+        
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sim960.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/sim960.jpg" alt="SIM960">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">SIM960</div>
+                    <div class="product-name">Analog PID Controller</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>100 kHz bandwidth</li>
+                    <li>P, I, D & Offset settable to 0.5%</li>
+                    <li>Anti-windup (fast saturation recovery)</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM960c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM960m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$2,595</div>
+                </div>
+            </div>
+        </div>
+        
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sim965.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/sim965.jpg" alt="SIM965">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">SIM965</div>
+                    <div class="product-name">Analog Bessel & Butterworth Filter</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>1 MHz bandwidth</li>
+                    <li>Low-pass or High-pass</li>
+                    <li>12, 24, 36, or 48 dB/oct</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM965c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM965m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$2,295</div>
+                </div>
+            </div>
+        </div>
+        
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sim983.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/sim983.jpg" alt="SIM983">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">SIM983</div>
+                    <div class="product-name">1 MHz Scaling Amplifier</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>Adjustable gain and offset</li>
+                    <li>V = G x (V<sub>in</sub> + V<sub>os</sub>)</li>
+                    <li>1 MHz bandwidth</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM983c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM983m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$1,795</div>
+                </div>
+            </div>
+        </div>
+        
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sim984.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/sim984.jpg" alt="SIM984">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">SIM984</div>
+                    <div class="product-name">Isolation Amplifier</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>Isolation voltage up to ±1000 V</li>
+                    <li>1 MHz bandwidth</li>
+                    <li>Gain of x1, x10, or x100</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM984c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM984m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$1,795</div>
+                </div>
+            </div>
+        </div>
+        
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/sim9b19b2.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/sim9b1_9b2.jpg" alt="SIM9B2">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">SIM9B2</div>
+                    <div class="product-name">Double-wide Prototype Kit</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>Ideal for custom circuits</li>
+                    <li>Also available in single-wide</li>
+                    <li></li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM9B19B2c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM9B19B2m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$150</div>
+                </div>
+            </div>
+        </div>
+        
+            
+                
+                <div class="category-header" id="Temperature_Control">
+                    Temperature Control
+                </div>
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/ctc100.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/ctc100.jpg" alt="CTC100">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">CTC100</div>
+                    <div class="product-name">Cryogenic Temperature Controller</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>4 temperature sensor inputs</li>
+                    <li>Up to 6 feedback control loops</li>
+                    <li>Data logging</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/CTC100c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/CTC100m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$4,700</div>
+                </div>
+            </div>
+        </div>
+        
+            
+                
+                <div class="category-header" id="Timing">
+                    Timing
+                </div>
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/dg535.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/dg535.jpg" alt="DG535">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">DG535</div>
+                    <div class="product-name">Delay Generator</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>Four channels</li>
+                    <li>5 ps delay resolution</li>
+                    <li><100 ps rms jitter</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/DG535c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/DG535m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$4,495</div>
+                </div>
+            </div>
+        </div>
+        
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/dg645.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/dg645.jpg" alt="DG645">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">DG645</div>
+                    <div class="product-name">Delay Generator</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>4 pulse, 8 delay outputs</li>
+                    <li>Trigger rates to 10 MHz</li>
+                    <li><25 ps rms jitter</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/DG645c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/DG645m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$4,995</div>
+                </div>
+            </div>
+        </div>
+        
+            
+                
+                <div class="category-header" id="Vacuum_Gas_Analysis">
+                    Vacuum/Gas Analysis
+                </div>
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/bga244.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/bga244.jpg" alt="BGA244">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">BGA244</div>
+                    <div class="product-name">Binary Gas Analyzer</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>Gas concentration analyzer</li>
+                    <li>Contains data for nearly 500 gases</li>
+                    <li>0.01% typ. concentration error</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/BGA244c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/BGA244m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$4,950</div>
+                </div>
+            </div>
+        </div>
+        
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/rga120.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/rga120.png" alt="RGA120">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">RGA120</div>
+                    <div class="product-name">Resigual Gas Analyzer</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>5E-14 Torr detection limit</li>
+                    <li>New RGASoft Windows Software</li>
+                    <li>Built-in I/O, Relay, GPIO signals</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/RGA120c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/RGA120m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$5,450</div>
+                </div>
+            </div>
+        </div>
+        
+            
+                
+                <div class="category-header" id="Voltage_Current_Sources">
+                    Voltage/Current Sources
+                </div>
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/cs580.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/cs580.jpg" alt="CS580">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">CS580</div>
+                    <div class="product-name">Voltage Controlled Current Source</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>100 fA to 100 mA current range</li>
+                    <li>±50 V compliance voltage</li>
+                    <li>Up to 200 kHz bandwidth</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/CS580c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/CS580m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$4,495</div>
+                </div>
+            </div>
+        </div>
+        
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/dc205.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/dc205.jpg" alt="DC205">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">DC205</div>
+                    <div class="product-name">Precision DC Voltage Source</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>±100 VDC range</li>
+                    <li>1 ppm/°C stability</li>
+                    <li>0.0025% accuracy (1 yr)</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/DC205c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/DC205m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$2,995</div>
+                </div>
+            </div>
+        </div>
+        
+            
+        <div class="product-card" onclick="window.open('https://www.thinksrs.com/products/dc215.html', '_blank')">
+            <div class="product-image">
+                
+                <img src="images/dc215.jpg" alt="DC215">
+                
+            </div>
+
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">DC215</div>
+                    <div class="product-name">DC Voltage/Current Source</div>
+                </div>
+
+                <ul class="product-features">
+                    <li>±32 V and ±240 mA</li>
+                    <li>4-quadrant operation (source/sink)</li>
+                    <li>GPIB, Ethernet, & RS-232</li>
+                </ul>
+
+                <div class="product-footer">
+                    <div class="product-links">
+                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/DC215c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📄</span>
+                            <span>Datasheet</span>
+                        </a>
+                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/DC215m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                            <span class="icon">📖</span>
+                            <span>Manual</span>
+                        </a>
+                    </div>
+                    <div class="product-price">$3,890</div>
+                </div>
+            </div>
+        </div>
+        
     </div>
+
+    <script>
+        function scrollToCategory(categoryId) {
+            if (!categoryId) return;
+            
+            const element = document.getElementById(categoryId);
+            if (element) {
+                // Get the container element
+                const container = document.querySelector('.container');
+                
+                // Calculate the position to scroll to
+                const elementTop = element.offsetTop;
+                const containerTop = container.offsetTop;
+                
+                // Scroll the container to the category
+                container.scrollTo({
+                    top: elementTop - containerTop - 10,
+                    behavior: 'smooth'
+                });
+            }
+            
+            // Reset dropdown to default after scrolling
+            setTimeout(() => {
+                document.querySelector('.category-dropdown').value = '';
+            }, 300);
+        }
+    </script>
 </body>
 </html>
