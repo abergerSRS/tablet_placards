@@ -143,6 +143,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            margin-left: 15px;
         }
 
         .product-header {
@@ -167,7 +168,7 @@
 
         .product-features {
             list-style: none;
-            margin-bottom: 10px;
+            flex: 1;
         }
 
         .product-features li {
@@ -187,18 +188,27 @@
             font-weight: bold;
         }
 
-        .product-footer {
+        .product-right-section {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: auto;
-            padding-top: 10px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-end;
+            min-width: 180px;
+            padding-left: 20px;
         }
 
         .product-links {
             display: flex;
+            flex-direction: column;
             gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
         }
 
         .product-link {
@@ -214,6 +224,8 @@
             font-size: 14px;
             transition: all 0.2s ease;
             font-weight: 500;
+            min-width: 120px;
+            justify-content: center;
         }
 
         .product-link:hover {
@@ -324,20 +336,20 @@
                     <li>{{ product.bullet_2 }}</li>
                     <li>{{ product.bullet_3 }}</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="{{ product.datasheet_link }}" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="{{ product.manual_link }}" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">${{ product.price }}</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="{{ product.datasheet_link }}" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="{{ product.manual_link }}" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">${{ product.price }}</div>
             </div>
         </div>
         {% endfor %}

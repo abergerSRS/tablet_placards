@@ -143,6 +143,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            margin-left: 15px;
         }
 
         .product-header {
@@ -167,7 +168,7 @@
 
         .product-features {
             list-style: none;
-            margin-bottom: 10px;
+            flex: 1;
         }
 
         .product-features li {
@@ -187,18 +188,27 @@
             font-weight: bold;
         }
 
-        .product-footer {
+        .product-right-section {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: auto;
-            padding-top: 10px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-end;
+            min-width: 180px;
+            padding-left: 20px;
         }
 
         .product-links {
             display: flex;
+            flex-direction: column;
             gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
         }
 
         .product-link {
@@ -214,6 +224,8 @@
             font-size: 14px;
             transition: all 0.2s ease;
             font-weight: 500;
+            min-width: 120px;
+            justify-content: center;
         }
 
         .product-link:hover {
@@ -340,20 +352,20 @@
                     <li>1 volt resolution</li>
                     <li>0.05% accuracy</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/PS300c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/PS365m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$4,695</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/PS300c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/PS365m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$4,695</div>
             </div>
         </div>
         
@@ -381,20 +393,20 @@
                     <li>Ultra-low drift (<10 ppm/°C)</li>
                     <li>36 W TEC controller</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/LDC500c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/LDC501m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$3,500</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/LDC500c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/LDC501m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$3,500</div>
             </div>
         </div>
         
@@ -417,20 +429,20 @@
                     <li>GPIB, RS-232, Ethernet</li>
                     <li>4 ms to 10 ks exposure (0.1 ms resolution)</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR470474c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR470m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$1,995</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR470474c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR470m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$1,995</div>
             </div>
         </div>
         
@@ -453,20 +465,20 @@
                     <li>>10 M cycle lifetime</li>
                     <li>Easy-to-align 3 mm aperture</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR470474c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR475_476m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$995</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR470474c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR475_476m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$995</div>
             </div>
         </div>
         
@@ -489,20 +501,20 @@
                     <li>Low phase jitter</li>
                     <li>USB interface</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR542c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR542m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$2,995</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR542c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR542m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$2,995</div>
             </div>
         </div>
         
@@ -530,20 +542,20 @@
                     <li>0.2 Hz to 200 kHz measurement range</li>
                     <li>Harmonic detection (f, 2f, 3f)</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR2124c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR2124m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$9,100</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR2124c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR2124m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$9,100</div>
             </div>
         </div>
         
@@ -566,20 +578,20 @@
                     <li>1 µs to 30 ks time constants</li>
                     <li>2.5 nV/√Hz at 1 kHz</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR865Ac.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR865Am.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$9,150</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR865Ac.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR865Am.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$9,150</div>
             </div>
         </div>
         
@@ -607,20 +619,20 @@
                     <li>3.3 nV/√Hz input noise (@1 MHz)</li>
                     <li>Differential output</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR446c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR446m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$1,995</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR446c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR446m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$1,995</div>
             </div>
         </div>
         
@@ -643,20 +655,20 @@
                     <li>Gain of x10</li>
                     <li>1 MHz bandwidth</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR551c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR550551552m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$750</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR551c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR550551552m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$750</div>
             </div>
         </div>
         
@@ -679,20 +691,20 @@
                     <li>0.1 nV/√Hz input noise</li>
                     <li>For source impedances 0.05 Ω -- 1 kΩ</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR554c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR554m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$2,695</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR554c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR554m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$2,695</div>
             </div>
         </div>
         
@@ -715,20 +727,20 @@
                     <li>5 fA/√Hz input noise</li>
                     <li>Bias voltage input</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR556c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR555556m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$1,095</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR556c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR555556m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$1,095</div>
             </div>
         </div>
         
@@ -751,20 +763,20 @@
                     <li>1 MHz bandwidth</li>
                     <li>Line or battery operation</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR560c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR560m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$3,095</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SR560c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SR560m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$3,095</div>
             </div>
         </div>
         
@@ -792,20 +804,20 @@
                     <li>Analog and vector modulation</li>
                     <li>I/Q modulation inputs</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SG390c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SG390m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$9,900</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SG390c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SG390m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$9,900</div>
             </div>
         </div>
         
@@ -833,20 +845,20 @@
                     <li>10 MHz Reference Input</li>
                     <li>GPIB, RS-232</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM900c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM900m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$2,995</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM900c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM900m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$2,995</div>
             </div>
         </div>
         
@@ -869,20 +881,20 @@
                     <li>µV/pA excitation</li>
                     <li>Measurements from 1 mΩ to 100 MΩ</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM921c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM921m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$2,995</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM921c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM921m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$2,995</div>
             </div>
         </div>
         
@@ -905,20 +917,20 @@
                     <li>Ultra-low noise output</li>
                     <li>Battery lifetime: 1000 cycles</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM928c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM928m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$1,995</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM928c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM928m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$1,995</div>
             </div>
         </div>
         
@@ -941,20 +953,20 @@
                     <li>P, I, D & Offset settable to 0.5%</li>
                     <li>Anti-windup (fast saturation recovery)</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM960c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM960m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$2,595</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM960c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM960m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$2,595</div>
             </div>
         </div>
         
@@ -977,20 +989,20 @@
                     <li>Low-pass or High-pass</li>
                     <li>12, 24, 36, or 48 dB/oct</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM965c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM965m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$2,295</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM965c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM965m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$2,295</div>
             </div>
         </div>
         
@@ -1013,20 +1025,20 @@
                     <li>V = G&times;(V<sub>in</sub> + V<sub>os</sub>)</li>
                     <li>1 MHz bandwidth</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM983c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM983m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$1,795</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM983c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM983m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$1,795</div>
             </div>
         </div>
         
@@ -1049,20 +1061,20 @@
                     <li>1 MHz bandwidth</li>
                     <li>Gain of x1, x10, or x100</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM984c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM984m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$1,795</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM984c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM984m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$1,795</div>
             </div>
         </div>
         
@@ -1085,20 +1097,20 @@
                     <li>Integrate into SIM900 Mainframe</li>
                     <li>Also available in single-wide</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM9B19B2c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM9B19B2m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$150</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/SIM9B19B2c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/SIM9B19B2m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$150</div>
             </div>
         </div>
         
@@ -1126,20 +1138,20 @@
                     <li>Up to 6 feedback control loops</li>
                     <li>Data logging</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/CTC100c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/CTC100m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$4,700</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/CTC100c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/CTC100m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$4,700</div>
             </div>
         </div>
         
@@ -1167,20 +1179,20 @@
                     <li>5 ps delay resolution</li>
                     <li><100 ps rms jitter</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/DG535c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/DG535m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$4,495</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/DG535c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/DG535m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$4,495</div>
             </div>
         </div>
         
@@ -1203,20 +1215,20 @@
                     <li>Trigger rates to 10 MHz</li>
                     <li><25 ps rms jitter</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/DG645c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/DG645m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$4,995</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/DG645c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/DG645m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$4,995</div>
             </div>
         </div>
         
@@ -1244,20 +1256,20 @@
                     <li>Contains data for nearly 500 gases</li>
                     <li>0.01% typ. concentration error</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/BGA244c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/BGA244m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$4,950</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/BGA244c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/BGA244m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$4,950</div>
             </div>
         </div>
         
@@ -1280,20 +1292,20 @@
                     <li>New RGASoft Windows Software</li>
                     <li>Built-in I/O, Relay, and GPIO signals</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/RGA120c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/RGA120m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$5,450</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/RGA120c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/RGA120m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$5,450</div>
             </div>
         </div>
         
@@ -1321,20 +1333,20 @@
                     <li>±50 V compliance voltage</li>
                     <li>Up to 200 kHz bandwidth</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/CS580c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/CS580m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$4,495</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/CS580c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/CS580m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$4,495</div>
             </div>
         </div>
         
@@ -1357,20 +1369,20 @@
                     <li>1 ppm/°C stability</li>
                     <li>0.0025% accuracy (1 yr)</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/DC205c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/DC205m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$2,995</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/DC205c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/DC205m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$2,995</div>
             </div>
         </div>
         
@@ -1393,20 +1405,20 @@
                     <li>4-quadrant operation (source/sink)</li>
                     <li>GPIB, Ethernet, & RS-232</li>
                 </ul>
+            </div>
 
-                <div class="product-footer">
-                    <div class="product-links">
-                        <a href="https://www.thinksrs.com/downloads/pdfs/catalog/DC215c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📄</span>
-                            <span>Datasheet</span>
-                        </a>
-                        <a href="https://www.thinksrs.com/downloads/pdfs/manuals/DC215m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
-                            <span class="icon">📖</span>
-                            <span>Manual</span>
-                        </a>
-                    </div>
-                    <div class="product-price">$3,890</div>
+            <div class="product-right-section">
+                <div class="product-links">
+                    <a href="https://www.thinksrs.com/downloads/pdfs/catalog/DC215c.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📄</span>
+                        <span>Datasheet</span>
+                    </a>
+                    <a href="https://www.thinksrs.com/downloads/pdfs/manuals/DC215m.pdf" class="product-link" target="_blank" onclick="event.stopPropagation();">
+                        <span class="icon">📖</span>
+                        <span>Manual</span>
+                    </a>
                 </div>
+                <div class="product-price">$3,890</div>
             </div>
         </div>
         
