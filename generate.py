@@ -62,10 +62,10 @@ def main():
     html_output = render_template('template.html', products, categories)
     
     # Write output HTML
-    with open('product_display.html', 'w', encoding='utf-8') as f:
+    with open('index.html', 'w', encoding='utf-8') as f:
         f.write(html_output)
     
-    print(f"\nGenerated product_display.html with {len(products)} products")
+    print(f"\nGenerated index.html with {len(products)} products")
     print(f"Categories: {', '.join(categories)}")
     print("\nProducts included:")
     for product in products:
