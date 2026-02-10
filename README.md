@@ -12,7 +12,7 @@ Products are listed in a CSV file and HTML file is automatically-generated from 
 1. **template.html** - Jinja2 HTML template with product display layout
 2. **products.csv** - Product data in CSV format
 3. **generate.py** - Python script to render the template with CSV data
-4. **product_display.html** - Generated HTML output (ready to use)
+4. **index.html** - Generated HTML output (ready to use)
 
 ## Product Data Structure
 
@@ -236,11 +236,25 @@ body {
 - Product data scraped from thinksrs.com (February 2026)
 - Prices are approximate U.S. list prices
 
-## Browser Compatibility
+## Display on a Tablet
 
-Works with all modern browsers:
-- Chrome/Edge
-- Firefox
-- Safari
+The idea of creating this webpage is for full-screen display on a ~7" tablet.
+Unfortunately, this has proved non-trivial.  
 
-Optimized for tablet display with touch-friendly spacing and hover effects.
+- Chrome on Android does not have a Full Screen view  
+- There are apps that offer full screen view, but they introduce other complications:  
+
+1. **Hermit**. Unable to display a locally-stored HTML. Can only display "served" websites. Also doesn't have a built-in PDF viewer, so PDFs (Datasheets and Manuals) must first be downloaded, then passed off to the Android PDF viewer app. This is cumbersome. 
+
+There are a couple solutions for this.  
+
+  - On Android, you can run a local server with Simple HTTP Server. This is a $6 app (for the plus version which can run continuously)  
+  - Host the tablet_placards repo on GitHub pages. (See below documentation)
+
+2. **Fully Kiosk Browser**. This app is designed to provide full-screen "Kiosk" applications... exactly what we are looking for. $10/tablet. Can work with local .html file, or web-accessed pages.
+
+3. **Firefox**. Has a "Scroll to hide toolbar" setting that should work. Has a built-in PDF viewer. Perhaps the simplest solution.
+
+## Hosting on GitHub Pages
+The product index is now hosted on GitHub (viewable publicly) at 
+  [https://abergersrs.github.io/tablet_placards/](https://abergersrs.github.io/tablet_placards/).
