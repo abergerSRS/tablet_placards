@@ -13,14 +13,18 @@
 
         body {
             width: 100vw;
-            height: 100vh;
+             min-height: 100vh; 
+            overflow-y: auto;
             background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;            
             color: #e0e0e0;
         }
 
         .header {
-            background: rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: #1a1a2e 100%;
             padding: 8px 20px;
             border-bottom: 2px solid #00d9ff;
             display: flex;
@@ -261,8 +265,8 @@
         }
 
         .container {
-            height: calc(100vh - 70px);
-            overflow-y: auto;
+            height: auto;
+            overflow: visible;
             padding: 0;
         }
 
@@ -448,7 +452,7 @@
             color: #00d9ff;
             text-transform: uppercase;
             letter-spacing: 1px;
-            scroll-margin-top: 20px;
+            scroll-margin-top: 75px;
         }
 
         .category-header:first-of-type {
@@ -496,6 +500,7 @@
                 flex-direction: column;
                 margin: 8px;
                 padding: 10px;
+                scroll-margin-top: 75px;
             }
 
             .product-image {
@@ -692,16 +697,11 @@
         // Scroll to category function
         function scrollToCategory(categoryId) {
             if (!categoryId) return;
-            
+
             const element = document.getElementById(categoryId);
             if (element) {
-                const container = document.querySelector('.container');
-                const elementTop = element.offsetTop;
-                const containerTop = container.offsetTop;
-                
-                container.scrollTo({
-                    top: elementTop - containerTop - 10,
-                    behavior: 'smooth'
+                element.scrollIntoView({
+                block: 'start'
                 });
             }
         }
@@ -745,22 +745,14 @@
         // Scroll to specific product
         function scrollToProduct(productPn) {
             const productCard = document.getElementById('product-' + productPn);
-            if (productCard) {
-                const container = document.querySelector('.container');
-                const cardTop = productCard.offsetTop;
-                const containerTop = container.offsetTop;
-                
-                container.scrollTo({
-                    top: cardTop - containerTop - 20,
-                    behavior: 'smooth'
-                });
+            if (!productCard) return;
 
-                // Highlight the card briefly
-                productCard.style.boxShadow = '0 0 30px rgba(0, 217, 255, 0.8)';
-                setTimeout(() => {
-                    productCard.style.boxShadow = '';
-                }, 2000);
-            }
+            productCard.scrollIntoView({
+                block: 'start'
+            });
+
+            productCard.style.boxShadow = '0 0 30px rgba(0, 217, 255, 0.8)';
+            setTimeout(() => { productCard.style.boxShadow = ''; }, 2000);
         }
 
         // Close search results
