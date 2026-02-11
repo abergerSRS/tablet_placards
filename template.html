@@ -747,9 +747,13 @@
             const productCard = document.getElementById('product-' + productPn);
             if (!productCard) return;
 
-            productCard.scrollIntoView({
-                block: 'start'
-            });
+            const header = document.querySelector('.header');
+            const headerH = header ? header.getBoundingClientRect().height : 0;
+
+            // target y position in document coordinates
+            const y = window.scrollY + productCard.getBoundingClientRect().top - headerH - 10;
+
+            window.scrollTo({ top: y, behavior: 'smooth' });
 
             productCard.style.boxShadow = '0 0 30px rgba(0, 217, 255, 0.8)';
             setTimeout(() => { productCard.style.boxShadow = ''; }, 2000);
