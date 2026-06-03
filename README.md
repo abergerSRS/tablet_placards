@@ -259,4 +259,4 @@ There are a couple solutions for this.
 
 ## Hosting on GitHub Pages
 The product index is now hosted on GitHub (viewable publicly) at 
-  [https://abergersrs.github.io/tablet_placards/](https://abergersrs.github.io/tablet_placards/).
+  [https://thinksrs.github.io/tablet_placards/](https://thinksrs.github.io/tablet_placards/)
